@@ -1,6 +1,6 @@
 PS1="\[$bldgrn\]\u@\h \[$bldblu\]\w\$(~/.rvm/bin/rvm-prompt) \[$bldpur\]> \[$txtrst\]"
 #PS1=`echo "$PS1"|sed 's/\\\\w/\\\\w$(__git_info)/g'`
 
-export EDITOR="vim"
-export SVN_EDITOR="vim"
-export GIT_EDITOR="vim"
+export EDITOR="emacsclient -s server --alternate-editor=vim"
+export SVN_EDITOR="`echo $EDITOR`"
+export GIT_EDITOR="`echo $EDITOR`"
