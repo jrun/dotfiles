@@ -1,6 +1,8 @@
 # cd
 alias ..='cd ..'
 
+alias clr='clear'
+
 # ls
 alias ls="ls -F"
 alias l="ls -lAh"
