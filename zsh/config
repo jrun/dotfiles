@@ -1,8 +1,24 @@
-if [[ -n $SSH_CONNECTION ]]; then
-  export PS1=$'%m:%3~$(git_info_for_prompt) > '
-else
-  export PS1=$'%3~$(git_info_for_prompt) %{\033[1;34m%}>%{\033[0m%} '
-fi
+fpath=(~/.zsh/functions $fpath)
+autoload -U ~/.zsh/functions/*(:t)
+
+autoload -U promptinit
+promptinit
+ 
+case `uname` in
+     (Darwin)
+        prompt wunjo
+     ;;
+     (*)
+        # include git info on promp, adam2 doesn't have it otherwise
+        if [[ -n $SSH_CONNECTION ]]; then
+           export PS1=$'%m:%3~$(git_info_for_prompt) > '
+        else
+           export PS1=$'%3~$(git_info_for_prompt) %{\033[1;34m%}>%{\033[0m%} '
+        fi
+
+        prompt adam2
+    ;;
+esac
 
 export EDITOR="emacsclient -s server --alternate-editor=vim"
 export SVN_EDITOR="`echo $EDITOR`"
@@ -11,9 +27,6 @@ export GIT_EDITOR="`echo $EDITOR`"
 export PATH="/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
-fpath=(~/.zsh/functions $fpath)
-
-autoload -U ~/.zsh/functions/*(:t)
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
@@ -47,15 +60,3 @@ bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char 
-
-# Load the prompt theme system
-autoload -U promptinit
-promptinit
- 
-case `uname` in
-     (Darwin)
-        prompt wunjo
-     ;;
-     (*)
-        prompt adam2
-esac
