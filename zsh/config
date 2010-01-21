@@ -20,7 +20,7 @@ case `uname` in
     ;;
 esac
 
-export EDITOR="emacsclient -s server --alternate-editor=vim"
+export EDITOR="emacsclient --alternate-editor=vim"
 export SVN_EDITOR="`echo $EDITOR`"
 export GIT_EDITOR="`echo $EDITOR`"
 
