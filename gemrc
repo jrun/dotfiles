@@ -3,7 +3,8 @@
 gem: --no-ri --no-rdoc
 :update_sources: true
 :sources: 
-- http://gems.rubyforge.org
+- http://qdsred.qg.com/gems/
+- http://qdsgems.qg.com/
 :backtrace: false
 :bulk_threshold: 1000
 :benchmark: false

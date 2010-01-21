@@ -9,6 +9,8 @@ alias l="ls -lAh"
 alias ll="ls -l"
 alias la='ls -A'
 
+alias e="emacsclient -s emacs-server --alternate-editor=vim --no-wait"
+
 # git
 alias gl='git pull'
 alias gp='git push'
