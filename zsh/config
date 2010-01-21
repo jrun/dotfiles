@@ -1,4 +1,4 @@
-        if [[ -n $SSH_CONNECTION ]]; then
+if [[ -n $SSH_CONNECTION ]]; then
   export PS1=$'%m:%3~$(git_info_for_prompt) > '
 else
   export PS1=$'%3~$(git_info_for_prompt) %{\033[1;34m%}>%{\033[0m%} '
@@ -52,5 +52,10 @@ bindkey '^?' backward-delete-char
 autoload -U promptinit
 promptinit
  
-# Use the wunjo prompt theme
-prompt adam2 #wunjo
+case `uname` in
+     (Darwin)
+        prompt wunjo
+     ;;
+     (*)
+        prompt adam2
+esac
