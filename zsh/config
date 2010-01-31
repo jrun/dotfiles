@@ -27,6 +27,7 @@ export GIT_EDITOR="`echo $EDITOR`"
 export PATH="/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
+export CDPATH=:$HOME/work:$HOME/.emacs.d
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
