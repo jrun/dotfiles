@@ -62,3 +62,10 @@ bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char 
 bindkey '^f'  history-incremental-search-backward
+
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+case $TERM in (xterm*)
+     bindkey '\eOH' beginning-of-line
+     bindkey '\eOF' end-of-line
+esac
