@@ -1,5 +1,5 @@
-fpath=(~/.zsh/functions $fpath)
-autoload -U ~/.zsh/functions/*(:t)
+fpath=($DOTFILES/zsh/functions $fpath)
+autoload -U $DOTFILES/zsh/functions/*(:t)
 
 autoload -U promptinit
 promptinit
