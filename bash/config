@@ -4,3 +4,19 @@ export EDITOR="emacsclient --alternate-editor=vim"
 export SVN_EDITOR="`echo $EDITOR`"
 export GIT_EDITOR="`echo $EDITOR`"
 
+export CDPATH="$HOME:$HOME/work"
+
+if [[ -n "`type -p brew`" ]]; then
+
+    BREW_PREFIX=`brew --prefix`
+
+    # gets CDPATH tab completion on OSX
+    if [ -f $BREW_PREFIX/etc/bash_completion ]; then
+        . $BREW_PREFIX/etc/bash_completion
+    fi
+
+    if [ -f $BREW_PREFIX/Library/Contributions/brew_bash_completion.sh ]; then
+        . $BREW_PREFIX/Library/Contributions/brew_bash_completion.sh
+    fi
+
+fi
