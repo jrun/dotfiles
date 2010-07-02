@@ -1,0 +1,13 @@
+# ref: http://chneukirchen.org/blog/archive/2008/08/taming-rubylib-with-the-z-shell.html
+typeset -T -U -gx -a RUBYLIB rubylib ':'
+rubylib-add()   { rubylib+=("$@") }
+rubylib-del()   { for i ("$@") { rubylib[(r)$i]=() } }
+rubylib-reset() { rubylib=(); [[ -f ~/.rubylib ]] && source ~/.rubylib }
+
+# Examples:
+# rubylib-add ~/projects/{testspec,bacon,rack}/lib
+# rubylib-add ~/src/{camping,markaby}/lib
+# rubylib-add ~/src/rubystuff/*/(lib|ext)(/)
+
+rubylib-add-lib-spec () { rubylib-add "lib:spec" }
+rubylib-add-lib-test () { rubylib-add "lib:test" }
