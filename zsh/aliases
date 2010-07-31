@@ -9,7 +9,7 @@ alias l="ls -lAh"
 alias ll="ls -l"
 alias la='ls -A'
 
-alias e="emacsclient --alternate-editor=vim --no-wait"
+alias e="`echo $EDITOR`"
 
 # git
 alias gl='git pull'
