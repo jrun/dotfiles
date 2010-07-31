@@ -6,11 +6,11 @@ promptinit
  
 case `uname` in
      (Darwin)
-        export EDITOR="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor=vim --no-wait"
+        export EDITOR="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor=vim"
         prompt wunjo
      ;;
      (*)
-        export EDITOR="emacsclient --alternate-editor=vim --no-wait"
+        export EDITOR="emacsclient --alternate-editor=vim"
 
         # include git info on promp, adam2 doesn't have it otherwise
         if [[ -n $SSH_CONNECTION ]]; then

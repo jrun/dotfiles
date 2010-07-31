@@ -9,7 +9,7 @@ alias l="ls -lAh"
 alias ll="ls -l"
 alias la='ls -A'
 
-alias e="`echo $EDITOR`"
+alias e="$EDITOR --no-wait"
 
 # git
 alias gl='git pull'
