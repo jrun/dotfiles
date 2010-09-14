@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+include FileUtils
+
+dir = File.join(ENV['HOME'], '.dotfiles')
+
+unless Dir.exist?(dir)
+  puts ".dotfiles is missing."
+  exit(1)
+end
+
+system "ln -s #{dir}/bashrc .bashrc"
+system "ln -s #{dir}/bash_profile .bash_profile"
+system "ln -s #{dir}/gitignore .gitignore"      
+system "ln -s #{dir}/irbrc .irbrc"
+system "ln -s #{dir}/railsrc .railsrc"
+system "ln -s #{dir}/zsh .zsh"
+system "ln -s #{dir}/zshrc .zshrc"
+system "ln -s #{dir}/zlogin .zlogin"
+system "touch .localrc"
+
