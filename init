@@ -5,7 +5,7 @@ include FileUtils
 
 dir = File.join(ENV['HOME'], '.dotfiles')
 
-unless Dir.exist?(dir)
+unless File.exists?(dir)
   puts ".dotfiles is missing."
   exit(1)
 end
