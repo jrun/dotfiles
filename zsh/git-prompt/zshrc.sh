@@ -54,6 +54,6 @@ function prompt_git_info() {
 }
 
 # Set the prompt.
-PROMPT='%{${fg[magenta]}%}%B%m%{${fg[blue]}%}%~%b$(prompt_git_info) %{${fg_bold[white]}%}%# %{${fg_no_bold[default]}%}'
+PROMPT='%{${fg[magenta]}%}%B%m%{${fg[green]}%}%~%b$(prompt_git_info) %{${fg_bold[white]}%}%# %{${fg_no_bold[default]}%}'
 # for a right prompt:
 # RPROMPT='%b$(prompt_git_info)'
