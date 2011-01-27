@@ -11,15 +11,13 @@ case `uname` in
      ;;
      (*)
         export EDITOR="emacsclient --alternate-editor=vim"
+        
+        source $DOTFILES/zsh/git-prompt/zshrc.sh
 
         # include git info on promp, adam2 doesn't have it otherwise
         if [[ -n $SSH_CONNECTION ]]; then
-           export PS1=$'%m:%3~$(git_info_for_prompt) > '
-        else
-           export PS1=$'%3~$(git_info_for_prompt) %{\033[1;34m%}>%{\033[0m%} '
+           export PS1=$'%m:%3~$(prompt_git_info) > '
         fi
-
-        prompt adam2
     ;;
 esac
 
