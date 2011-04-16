@@ -92,7 +92,7 @@ prompt_wunjo_setup() {
 	pc[user]='cyan'
 	pc[punc]='yellow'
 	pc[line]='magenta'
-	pc[hist]='green'
+	pc[hist]='magenta'
 	pc[path]='Cyan'
 	pc[shortpath]='default'
 	pc[rc]='red'
@@ -112,14 +112,15 @@ prompt_wunjo_setup() {
 	local p_date p_line p_rc
 
 	p_date="$pc[date]%D{%Y-%m-%d} $pc[time]%D{%T}$pc[reset]"
-
 	p_line="$pc[line]%y$pc[reset]"
+
 
 	PROMPT="
 "
 	if [ $verbose ]; then
-		PROMPT+="$pc[host]%m$pc[reset] "
+	    PROMPT+="$pc[host]%n@%m$pc[reset] "
 	fi
+
 	PROMPT+="$pc[path]%(2~.%~.%/)$pc[reset]"
 	PROMPT+="\$(prompt_wunjo_scm_status)"
 	PROMPT+="%(?.. $pc[rc]exited %1v$pc[reset])"
