@@ -39,3 +39,5 @@ alias rst='touch tmp/restart.txt'
 
 # commands starting with % for pasting from web
 alias %=' '
+
+alias grep='grep --color'
