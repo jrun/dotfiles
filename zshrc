@@ -1,4 +1,4 @@
-DOTFILES=~/.dotfiles
+DOTFILES=~/dotfiles
 
 . $DOTFILES/zsh/config
 . $DOTFILES/zsh/aliases

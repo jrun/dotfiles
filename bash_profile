@@ -1,4 +1,4 @@
-DOTFILES=~/.dotfiles
+DOTFILES=~/dotfiles
 
 source $DOTFILES/bash/aliases
 source $DOTFILES/bash/completions
