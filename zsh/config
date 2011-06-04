@@ -24,10 +24,10 @@ esac
 export SVN_EDITOR=$EDITOR
 export GIT_EDITOR=$EDITOR
 
-export PATH="/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
+export PATH="/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
-export CDPATH=:$HOME:$HOME/work
+export CDPATH=:$HOME:$HOMEc/work:$HOME/c/hack
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
