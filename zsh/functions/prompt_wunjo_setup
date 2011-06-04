@@ -126,19 +126,19 @@ prompt_wunjo_setup() {
 	PROMPT+="%(?.. $pc[rc]exited %1v$pc[reset])"
 	PROMPT+="
 "
-	PROMPT+="$pc[hist]%h$pc[reset] "
-	PROMPT+="$pc[shortpath]%1~$pc[reset]"
-	PROMPT+="\$(prompt_wunjo_scm_branch)"
-	PROMPT+=" $pc[#]%#$pc[reset] "
+#	PROMPT+="$pc[hist]%h$pc[reset] "
+#	PROMPT+="$pc[shortpath]%1~$pc[reset]"
+#	PROMPT+="\$(prompt_wunjo_scm_branch)"
+	PROMPT+="$pc[#]%#$pc[reset] "
 
-#	RPROMPT=
+	RPROMPT=
 #	if [ $verbose ]; then
 #		RPROMPT+="$p_date "
 #	fi
 #	RPROMPT+="$pc[user]%n$pc[reset]"
 #	RPROMPT+=" $p_line"
-        
-	export PROMPT  #RPROMPT
+
+	export PROMPT  RPROMPT
 	precmd_functions+='prompt_wunjo_precmd'
 }
 
