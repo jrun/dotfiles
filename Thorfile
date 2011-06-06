@@ -1,13 +1,13 @@
 class Dotfiles < Thor
   include FileUtils
 
-  FILES = %w(bash_profile bashrc gitignore irbrc railsrc zlogin zshrc)
+  FILES = %w(bash_profile bashrc gitignore irbrc tmux.conf railsrc zlogin zshrc)
   OPTS  = {:force => :boolean, :verbose => :boolean, :noop => :boolean}
 
   desc 'install', 'Symlink dotfiles in home directory'
   method_options OPTS
   def install
-    each_dotfile {|src, dest| symlink src, dest, options}
+    each_dotfile {|src, dest| symlink src, dest, options rescue nil}
   rescue => err
     puts err.message
   end
@@ -15,7 +15,7 @@ class Dotfiles < Thor
   desc 'clean', 'Remove dotfile symlinks.'
   method_options OPTS
   def clean
-    each_dotfile {|src, dest| rm dest, options}
+    each_dotfile {|src, dest| rm dest, options rescue nil}
   rescue => err
     puts err.message
   end
