@@ -3,7 +3,7 @@ autoload -U $DOTFILES/zsh/functions/*(:t)
 
 autoload -U promptinit
 promptinit
- 
+
 case `uname` in
      (Darwin)
         export EDITOR="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor=vim"
@@ -11,7 +11,7 @@ case `uname` in
      ;;
      (*)
         export EDITOR="emacsclient --alternate-editor=vim"
-        
+
         source $DOTFILES/zsh/git-prompt/zshrc.sh
 
         # include git info on promp, adam2 doesn't have it otherwise
@@ -27,7 +27,7 @@ export GIT_EDITOR=$EDITOR
 export PATH="/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
-export CDPATH=:$HOME:$HOME/c:$HOMEc/work:$HOME/c/hack
+export CDPATH=:$HOME:$HOME/c:$HOME/c/work:$HOME/c/hack
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
@@ -60,7 +60,7 @@ bindkey '^[[5D' beginning-of-line
 bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
-bindkey '^?' backward-delete-char 
+bindkey '^?' backward-delete-char
 bindkey '^f'  history-incremental-search-backward
 
 bindkey '^[[H' beginning-of-line
