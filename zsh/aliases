@@ -22,6 +22,8 @@ alias gb='git branch'
 alias gst='git status'
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 alias ga='git add'
+alias gstash='git stash'
+alias gpop='git stash pop'
 
 alias sst='svn status'
 alias sc='svn commit'
