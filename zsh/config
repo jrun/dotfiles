@@ -27,7 +27,7 @@ export GIT_EDITOR=$EDITOR
 export PATH="/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
-export CDPATH=:$HOME:$HOME/c:$HOME/c/work:$HOME/c/hack
+export CDPATH=:$HOME:$HOME/work:$HOME/c:$HOME/work/hack:$HOME/c/hack
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
