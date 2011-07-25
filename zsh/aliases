@@ -52,3 +52,5 @@ alias tls='tmux list-sessions'
 alias ta='tmux attach -t '
 
 alias sha256='openssl dgst -sha256'
+
+alias mt='multitail -C'
