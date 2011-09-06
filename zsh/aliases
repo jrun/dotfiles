@@ -1,3 +1,4 @@
+
 # cd
 alias ..='cd ..'
 
@@ -54,3 +55,5 @@ alias ta='tmux attach -t '
 alias sha256='openssl dgst -sha256'
 
 alias mt='multitail -C'
+
+alias rb='rbenv'
