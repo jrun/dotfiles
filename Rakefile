@@ -1,6 +1,4 @@
-
-
-FILES = %w(bash_profile bashrc gitignore irbrc tmux.conf railsrc zlogin zshrc)
+FILES = %w(bash_profile bashrc gitconfig gitignore irbrc tmux.conf railsrc zlogin zshrc)
 OPTS  = {:force => :boolean, :verbose => :boolean, :noop => :boolean}
 
 options = {}
@@ -8,6 +6,7 @@ options = {}
 desc 'Symlink dotfiles in home directory'
 task :install do
   begin
+    render_gitconfig
     each_dotfile {|src, dest| symlink src, dest, options rescue nil}
     setup_emacsd
   rescue => err
@@ -17,15 +16,23 @@ end
 
 desc 'Remove dotfile symlinks.'
 task :clean do
-  begin  
+  begin
     each_dotfile {|src, dest| rm dest, options rescue nil}
+    rm 'gitconfig'
   rescue => err
     puts err.message
   end
 end
 
+def render_gitconfig
+  require 'erb'
+  File.open('gitconfig', 'w') do |f|
+    f.write ERB.new(File.read('gitconfig.erb')).result
+  end
+end
+
 def setup_emacsd
-  symlink File.expand_path('~/emacs'), File.expand_path('~/.emacs.d')
+  symlink File.expand_path('~/emacs'), File.expand_path('~/.emacs.d') rescue nil
 end
 
 def each_dotfile(&block)
@@ -33,3 +40,4 @@ def each_dotfile(&block)
     block.call File.expand_path(file), File.expand_path("~/.#{file}")
   end
 end
+
