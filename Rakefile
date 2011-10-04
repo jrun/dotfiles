@@ -18,7 +18,6 @@ desc 'Remove dotfile symlinks.'
 task :clean do
   begin
     each_dotfile {|src, dest| rm dest, options rescue nil}
-    rm 'gitconfig'
   rescue => err
     puts err.message
   end
