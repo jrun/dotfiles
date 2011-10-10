@@ -10,8 +10,17 @@ case `uname` in
         prompt wunjo
      ;;
      (*)
-        export EDITOR="emacsclient --alternate-editor=vim"
+        which emacsclient > /dev/null
+        emacsclient_installed=$?
 
+        if [ $emacsclient_installed -eq 0 ]
+        then
+          EDITOR="emacsclient --alternate-editor=vim"
+        else
+          EDITOR="vim"
+        fi
+
+        export EDITOR
         source $DOTFILES/zsh/git-prompt/zshrc.sh
 
         # include git info on promp, adam2 doesn't have it otherwise
