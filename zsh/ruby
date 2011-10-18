@@ -11,3 +11,5 @@ rubylib-reset() { rubylib=(); [[ -f ~/.rubylib ]] && source ~/.rubylib }
 
 rubylib-libspec () { rubylib-add "lib:spec" }
 rubylib-libtest () { rubylib-add "lib:test" }
+
+rblib() { export RUBYLIB=$(cat .rubylib) }
