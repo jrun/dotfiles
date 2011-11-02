@@ -1,0 +1,1 @@
+multitail -C -n 25 -l "ssh $1 tail -f $2"
