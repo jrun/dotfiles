@@ -4,10 +4,19 @@ autoload -U $DOTFILES/zsh/functions/*(:t)
 autoload -U promptinit
 promptinit
 
+# Initialize colors.
+autoload -U colors
+colors
+
 case `uname` in
      (Darwin)
         export EDITOR="~/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor=vim"
-        prompt wunjo
+
+        source $DOTFILES/zsh/git-prompt/zshrc.sh
+
+        export PROMPT='%0(?|%F{white}|%B%F{red})%?%b %F{green}%n@%m %F{cyan}%(2~.%~.%/)%f$(git_super_status)
+%F{yellow}%#%f '
+
      ;;
      (*)
         which emacsclient > /dev/null
@@ -25,7 +34,7 @@ case `uname` in
 
         # include git info on promp, adam2 doesn't have it otherwise
         if [[ -n $SSH_CONNECTION ]]; then
-           export PS1=$'%m:%3~$(prompt_git_info) > '
+        export PS1=$'%m:%3~$(git_super_status) > '
         fi
     ;;
 esac
