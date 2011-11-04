@@ -38,6 +38,7 @@ alias grep='grep --color'
 # tmux
 alias tls='tmux list-sessions'
 alias ta='tmux attach -t '
+alias tk='tmux kill-session -t '
 
 alias sha256='openssl dgst -sha256'
 
