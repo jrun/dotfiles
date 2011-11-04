@@ -1,6 +1,4 @@
 export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
 
-# use .localrc for settings specific to one system
 [[ -f ~/.localrc ]] && .  ~/.localrc
-
-
+[[ -f ~/.privaterc ]] && . ~/.privaterc
