@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 #
 # spark
 # https://github.com/holman/spark
@@ -44,7 +44,7 @@ EOF
 }
 
 # The actual fun characters we are generating in the sparkline.
-ticks=(▁ ▂ ▃ ▅ ▆ ▇)
+ticks=(▁ ▂ ▃ ▄ ▅ ▆ ▇)
 
 # The numbers the user gave us.
 numbers=()
@@ -120,7 +120,7 @@ print_ticks()
 {
   for number in ${numbers[@]}
   do
-    echo  $"$(print_tick $number)\c"
+    printf "%s" $"$(print_tick $number)"
   done
   echo ""
 }
