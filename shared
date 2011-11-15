@@ -1,4 +1,4 @@
-export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$DOTFILES/bin:$PATH"
 
 [[ -f ~/.localrc ]] && .  ~/.localrc
 [[ -f ~/.privaterc ]] && . ~/.privaterc
