@@ -83,7 +83,7 @@ sort_min()
 tier()
 {
   number_of_ticks=${#ticks[@]}
-  distance=$(echo "$(sort_max) / $number_of_ticks" | bc)
+  distance=$(( $(sort_max) / $number_of_ticks ))
   echo $distance
 }
 
@@ -98,19 +98,19 @@ print_tick()
   do
     tick=${ticks[$i]}
     number=$1
-    less_than=$(echo "$i * $tier + sort_min + $tier" | bc)
-    greater_than=$(echo "($i - 1) * $tier + sort_min + $tier" | bc)
-    result=$(echo "$number <= $less_than && $number >= $greater_than" | bc)
+    less_than=$(( $i * $tier + sort_min + $tier ))
+    greater_than=$(( ($i - 1) * $tier + sort_min + $tier ))
+    result=$(( $number <= $less_than && $number >= $greater_than ))
 
     if [ $result -eq 1 ]
     then
-      echo "$tick"
+      printf '%s' "$tick"
       return
     fi
   done
 
   last=${#ticks[@]}
-  echo ${ticks[$last-1]}
+  printf '%s' ${ticks[$last-1]}
 }
 
 # Iterate over all of our ticks and print them out.
@@ -120,9 +120,9 @@ print_ticks()
 {
   for number in ${numbers[@]}
   do
-    printf "%s" $"$(print_tick $number)"
+    print_tick $number
   done
-  echo ""
+  echo
 }
 
 while getopts ":h" option; do
@@ -133,23 +133,21 @@ while getopts ":h" option; do
 done
 
 # Accept input from $1 or from the pipeline.
-if test "$1" != ""
+if test "$*" != ""
 then
-  data="$1"
+  data="$*"
 else
-  data=''
-
   # check to see if stdin's a tty
   if [ -t 0 ]; then
     help
     exit
   fi
 
-  while read data; do
-    data=$data
-    break
-  done
+  read data
 fi
+
+# Trim spaces to allow input like '1, 2, 3'
+data=$(echo $data | tr -s ' ' ',')
 
 setup_array $data
 print_ticks $data
