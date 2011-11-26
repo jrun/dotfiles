@@ -10,7 +10,8 @@ colors
 
 case `uname` in
      (Darwin)
-        export EDITOR="~/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor=vim"
+        export JAVA_HOME='/Library/Java/Home'
+        export EDITOR="~/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor=mate"
 
         source $DOTFILES/zsh/git-prompt/zshrc.sh
 
@@ -42,10 +43,9 @@ esac
 export SVN_EDITOR=$EDITOR
 export GIT_EDITOR=$EDITOR
 
-export PATH="/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
-
-export CDPATH=:$HOME:$HOME/work:$HOME/c:$HOME/work/hack:$HOME/c/hack
+export CDPATH=:$HOME
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000

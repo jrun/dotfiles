@@ -1,4 +1,4 @@
 export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$DOTFILES/bin:$PATH"
 
-[[ -f ~/.localrc ]] && .  ~/.localrc
-[[ -f ~/.privaterc ]] && . ~/.privaterc
+[[ -f ~/dotfiles-home/zshrc ]] && . ~/dotfiles-home/zshrc
+[[ -f ~/dotfiles-work/zshrc ]] && . ~/dotfiles-work/zshrc
