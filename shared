@@ -1,4 +1,5 @@
 export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$DOTFILES/bin:$PATH"
+export NODE_PATH="/usr/local/lib/node_modules"
 
 [[ -f ~/dotfiles-home/zshrc ]] && . ~/dotfiles-home/zshrc
 [[ -f ~/dotfiles-work/zshrc ]] && . ~/dotfiles-work/zshrc
