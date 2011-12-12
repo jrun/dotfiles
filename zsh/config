@@ -15,7 +15,7 @@ case `uname` in
 
         source $DOTFILES/zsh/git-prompt/zshrc.sh
 
-        export PROMPT='%0(?||%B%F{red}%? %b)%F{green}%n@%m %F{cyan}%(2~.%~.%/)%f$(git_super_status)
+        export PROMPT='%0(?||%B%F{red}%? %b)%F{green}%($SSH_CONNECTION=."%n@%m "."")%F{cyan}%(2~.%~.%/)%f$(git_super_status)
 %F{yellow}%#%f '
 
      ;;
