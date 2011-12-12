@@ -8,40 +8,35 @@ promptinit
 autoload -U colors
 colors
 
+##
+# Begin Prompt
+source $DOTFILES/zsh/git-prompt/zshrc.sh
+
+HOSTNAME_LABEL="%F{green}%n@%m%f "
+if [ -n "$SSH_CONNECTION" ]; then
+  HOSTNAME_LABEL="%S$HOSTNAME_LABEL%s"
+fi
+
+export PROMPT='%0(?||%B%F{red}%? %b)$HOSTNAME_LABEL%B%F{cyan}%(2~.%~.%/)%b%f$(git_super_status)
+%B%F{yellow}%#%b%f '
+
+# End Prompt
+##
+
 case `uname` in
      (Darwin)
         export JAVA_HOME='/Library/Java/Home'
         export EDITOR="~/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor=mate"
-
-        source $DOTFILES/zsh/git-prompt/zshrc.sh
-
-        HOSTNAME_LABEL="%F{green}%n@%m%f "
-        if [ -n "$SSH_CONNECTION" ]; then
-          HOSTNAME_LABEL="%B%K{green}%F{white}%n@%m%k%b%f "
-        fi
-
-        export PROMPT='%0(?||%B%F{red}%? %b)$HOSTNAME_LABEL%F{cyan}%(2~.%~.%/)%f$(git_super_status)
-%F{yellow}%#%f '
-
      ;;
      (*)
         which emacsclient > /dev/null
         emacsclient_installed=$?
 
-        if [ $emacsclient_installed -eq 0 ]
-        then
+        EDITOR='vim'
+        if [ $emacsclient_installed -eq 0 ]; then
           EDITOR="emacsclient --alternate-editor=vim"
-        else
-          EDITOR="vim"
         fi
-
         export EDITOR
-        source $DOTFILES/zsh/git-prompt/zshrc.sh
-
-        # include git info on promp, adam2 doesn't have it otherwise
-        if [[ -n $SSH_CONNECTION ]]; then
-        export PS1=$'%m:%3~$(git_super_status) > '
-        fi
     ;;
 esac
 
