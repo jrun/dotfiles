@@ -1,0 +1,12 @@
+cwd=`pwd`
+cd
+
+tmux new-session -d -s dev -n emacs 'emacs -nw'
+
+tmux new-window -t dev: -n scratch
+tmux split-window -h
+
+tmux select-window -t dev:0
+tmux -2 attach-session -t dev
+
+cd $cwd
