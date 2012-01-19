@@ -1,6 +1,6 @@
 cwd=`pwd`
 cd
 
-tmux new-session -d -s chat -n irc weechat
+tmux new-session -d -s chat -n irc weechat-curses
 
 cd $cwd
