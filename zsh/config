@@ -44,8 +44,12 @@ export SVN_EDITOR=$EDITOR
 export GIT_EDITOR=$EDITOR
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
-export CDPATH=:$HOME
+export MANPATH="/usr/local/man:/usr/local/git/man:$MANPATH"
+export DEV_PATH="$HOME/dev"
+export HOME_DEV_PATH="$HOME/dev/h"
+export WORK_DEV_PATH="$HOME/dev/w"
+export OSS_DEV_PATH="$HOME/dev/oss"
+export CDPATH=":$WORK_DEV_PATH:$HOME_DEV_PATH:$OSS_DEV_PATH:$DEV_PATH:$HOME:$CDPATH"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
