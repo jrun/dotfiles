@@ -18,6 +18,10 @@
 	whitespace = nowarn
 [format]
 	pretty = %C(yellow)%h%Creset %s
+[merge]
+  tool = emerge
+[mergetool "emerge"]
+  path = emerge-for-git
 
 <% github_user = print("GitHub User: "); STDOUT.flush; STDIN.gets.chomp %>
 <% if github_user %>
