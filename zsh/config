@@ -28,6 +28,9 @@ case `uname` in
         export JAVA_HOME='/Library/Java/Home'
         export EDITOR="~/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor=mate"
      ;;
+     (SunOS)
+        export TERM='xterm'
+     ;;
      (*)
         which emacsclient > /dev/null
         emacsclient_installed=$?
