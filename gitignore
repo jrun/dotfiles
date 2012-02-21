@@ -19,5 +19,6 @@ rdoc
 pkg
 
 ## PROJECT::SPECIFIC
-doc
 .yardoc
+doc/*
+!doc/*.md
