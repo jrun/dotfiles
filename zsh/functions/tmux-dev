@@ -1,7 +1,18 @@
 cwd=`pwd`
 cd
 
-tmux new-session -d -s dev -n emacs 'emacs -nw'
+##
+# Open a window for emacs but don't open emacs because
+# reattach-to-user-namespace is run as the tmux
+# default-command. It is required for emacs+tmux copy
+# and paste suport. Not a big deal since this is not
+# run very often.
+#
+# This has the added benefit of not having to open
+# a new window if emacs has to be restarted for
+# whatever reason.
+##
+tmux new-session -d -s dev -n emacs
 
 tmux new-window -t dev: -n scratch
 tmux split-window -h
