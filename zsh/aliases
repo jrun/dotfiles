@@ -45,3 +45,5 @@ alias sha256='openssl dgst -sha256'
 alias mt='multitail -C'
 
 alias rb='rbenv'
+
+alias gempurge='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
