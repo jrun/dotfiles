@@ -1,9 +1,52 @@
+##
+# Determine whether or not some programs
+# are installed.
+##
+which emacsclient > /dev/null
+emacsclient_installed=$?
+
+# Sometimes I'm on a server that doesn't have git
+# installed so I curl the dotfiles tarball. Check
+# so things that depend on git can be disabled.
+which git > /dev/null
+git_installed=$?
+
+##
+# rbenv
+##
 if [[ -a "$HOME/.rbenv/shims" ]]; then
-   PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+  PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
 fi
 
-export PATH="$DOTFILES/bin:$PATH"
-export NODE_PATH="/usr/local/lib/node_modules"
+##
+# Platform specific
+##
+case `uname` in
+     (Darwin)
+        export JAVA_HOME='/Library/Java/Home'
 
-[[ -f ~/dotfiles-home/zshrc ]] && . ~/dotfiles-home/zshrc
-[[ -f ~/dotfiles-work/zshrc ]] && . ~/dotfiles-work/zshrc
+        EDITOR='emacsclient --alternate-editor=mate'
+     ;;
+     (SunOS)
+        export TERM='xterm'
+     ;;
+     (*)
+        EDITOR='vim'
+        if [ $emacsclient_installed -eq 0 ]; then
+          EDITOR="emacsclient --alternate-editor=vim"
+        fi
+    ;;
+esac
+
+export EDITOR
+export SVN_EDITOR=$EDITOR
+export GIT_EDITOR=$EDITOR
+
+export PATH="$DOTFILES/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export MANPATH="/usr/local/man:/usr/local/git/man:$MANPATH"
+export DEV_PATH="$HOME/dev"
+export HOME_DEV_PATH="$HOME/dev/h"
+export WORK_DEV_PATH="$HOME/dev/w"
+export OSS_DEV_PATH="$HOME/dev/oss"
+export CDPATH=":$WORK_DEV_PATH:$HOME_DEV_PATH:$OSS_DEV_PATH:$DEV_PATH:$HOME:$CDPATH"
+export NODE_PATH="/usr/local/lib/node_modules"

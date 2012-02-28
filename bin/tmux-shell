@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+# If anyone happens to looks at this and knows of a beter
+# way, let me know. Thanks!
+
+case `uname` in
+  (Darwin)
+    `reattach-to-user-namespace -l zsh`
+  ;;
+  (*)
+    `zsh`
+  ;;
+esac

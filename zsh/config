@@ -1,28 +1,11 @@
 fpath=($DOTFILES/zsh/functions $fpath)
 autoload -U $DOTFILES/zsh/functions/*(:t)
 
-autoload -U promptinit
-promptinit
-
 ##
 # Initialize colors
 ##
 autoload -U colors
 colors
-
-##
-# Determine whether or not some programs
-# are installed.
-##
-
-which emacsclient > /dev/null
-emacsclient_installed=$?
-
-# Sometimes I'm on a server that doesn't have git
-# installed so I curl the dotfiles tarball. Check
-# so things that depend on git can be disabled.
-which git > /dev/null
-git_installed=$?
 
 ##
 # Prompt
@@ -44,61 +27,35 @@ export PROMPT="$PROMPT
 %B%F{yellow}%#%b%f "
 
 ##
-# Platform specific
+# Options
 ##
-case `uname` in
-     (Darwin)
-        export JAVA_HOME='/Library/Java/Home'
-        export EDITOR='emacsclient --alternate-editor=mate'
-     ;;
-     (SunOS)
-        export TERM='xterm'
-     ;;
-     (*)
-        EDITOR='vim'
-        if [ $emacsclient_installed -eq 0 ]; then
-          EDITOR="emacsclient --alternate-editor=vim"
-        fi
-        export EDITOR
-    ;;
-esac
-
-export SVN_EDITOR=$EDITOR
-export GIT_EDITOR=$EDITOR
-
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export MANPATH="/usr/local/man:/usr/local/git/man:$MANPATH"
-export DEV_PATH="$HOME/dev"
-export HOME_DEV_PATH="$HOME/dev/h"
-export WORK_DEV_PATH="$HOME/dev/w"
-export OSS_DEV_PATH="$HOME/dev/oss"
-export CDPATH=":$WORK_DEV_PATH:$HOME_DEV_PATH:$OSS_DEV_PATH:$DEV_PATH:$HOME:$CDPATH"
-
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 REPORTTIME=10 # print elapsed time when more than 10 seconds
 
+setopt APPEND_HISTORY # adds history
+setopt AUTO_CD
+setopt COMPLETE_IN_WORD
+setopt EXTENDED_HISTORY # add timestamps to history
+setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+setopt IGNORE_EOF
+setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
+setopt LOCAL_OPTIONS # allow functions to have local options
+setopt LOCAL_TRAPS # allow functions to have local traps
 setopt NO_BG_NICE # don't nice background tasks
 setopt NO_HUP
 setopt NO_LIST_BEEP
-setopt LOCAL_OPTIONS # allow functions to have local options
-setopt LOCAL_TRAPS # allow functions to have local traps
-setopt HIST_VERIFY
-setopt SHARE_HISTORY # share history between sessions ???
-setopt EXTENDED_HISTORY # add timestamps to history
 setopt PROMPT_SUBST
-setopt CORRECT
-setopt COMPLETE_IN_WORD
-setopt IGNORE_EOF
-
-setopt APPEND_HISTORY # adds history
-setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
-setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
-setopt HIST_REDUCE_BLANKS
+setopt SHARE_HISTORY # share history between sessions ???
 
 zle -N newtab
 
+##
+# Bindings
+##
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
