@@ -4,7 +4,9 @@ autoload -U $DOTFILES/zsh/functions/*(:t)
 autoload -U promptinit
 promptinit
 
-# Initialize colors.
+##
+# Initialize colors
+##
 autoload -U colors
 colors
 
@@ -23,10 +25,13 @@ export PROMPT='%0(?||%B%F{red}%? %b)$HOSTNAME_LABEL %F{cyan}%(2~.%~.%/)%b%f$(git
 # End Prompt
 ##
 
+##
+# Platform specific
+##
 case `uname` in
      (Darwin)
         export JAVA_HOME='/Library/Java/Home'
-        export EDITOR="~/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor=mate"
+        export EDITOR='emacsclient --alternate-editor=mate'
      ;;
      (SunOS)
         export TERM='xterm'
