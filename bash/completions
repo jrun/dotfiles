@@ -1,4 +1,0 @@
-source $DOTFILES/bash/completion_scripts/git_completion
-complete -C $DOTFILES/bash/completion_scripts/rake_completion -o default rake
-complete -C $DOTFILES/bash/completion_scripts/project_completion -o default c
-complete -C $DOTFILES/bash/completion_scripts/capistrano_completion -o default cap
