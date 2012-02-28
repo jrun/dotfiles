@@ -11,19 +11,37 @@ autoload -U colors
 colors
 
 ##
-# Begin Prompt
-source $DOTFILES/zsh/git-prompt/zshrc.sh
+# Determine whether or not some programs
+# are installed.
+##
 
+which emacsclient > /dev/null
+emacsclient_installed=$?
+
+# Sometimes I'm on a server that doesn't have git
+# installed so I curl the dotfiles tarball. Check
+# so things that depend on git can be disabled.
+which git > /dev/null
+git_installed=$?
+
+##
+# Prompt
+##
 HOSTNAME_LABEL="%B%F{green}%n@%m%f"
 if [ -n "$SSH_CONNECTION" ]; then
   HOSTNAME_LABEL="%S$HOSTNAME_LABEL%s"
 fi
 
-export PROMPT='%0(?||%B%F{red}%? %b)$HOSTNAME_LABEL %F{cyan}%(2~.%~.%/)%b%f$(git_super_status)
-%B%F{yellow}%#%b%f '
+PROMPT='%0(?||%B%F{red}%? %b)$HOSTNAME_LABEL %F{cyan}%(2~.%~.%/)%b%f$'
 
-# End Prompt
-##
+# Add git information to prompt
+if [ $git_installed -eq 0 ]; then
+  source $DOTFILES/zsh/git-prompt/zshrc.sh
+  PROMPT="$PROMPT(git_super_status)"
+fi
+
+export PROMPT="$PROMPT
+%B%F{yellow}%#%b%f "
 
 ##
 # Platform specific
@@ -37,9 +55,6 @@ case `uname` in
         export TERM='xterm'
      ;;
      (*)
-        which emacsclient > /dev/null
-        emacsclient_installed=$?
-
         EDITOR='vim'
         if [ $emacsclient_installed -eq 0 ]; then
           EDITOR="emacsclient --alternate-editor=vim"
