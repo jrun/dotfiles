@@ -18,4 +18,4 @@ d_script << <<-ACTION
 }
 ACTION
 
-exec "sudo dtrace -q -n '#{d_script}'"
+exec "sudo dtrace -Zqn '#{d_script}'"
