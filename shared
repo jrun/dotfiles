@@ -12,11 +12,14 @@ which git > /dev/null
 git_installed=$?
 
 ##
-# rbenv
+# path
 ##
-if [[ -a "$HOME/.rbenv/shims" ]]; then
-  PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
-fi
+export PATH="$DOTFILES/bin:$PATH"
+
+##
+# ruby
+##
+eval "$(rbenv init -)"
 
 ##
 # Platform specific
@@ -26,6 +29,9 @@ case `uname` in
         export JAVA_HOME='/Library/Java/Home'
 
         EDITOR='emacsclient --alternate-editor=mate'
+
+        alias trustcert="sudo security add-trusted-cert -k /Library/Keychains/System.keychain"
+
      ;;
      (SunOS)
         export TERM='xterm'
@@ -45,7 +51,6 @@ export EDITOR
 export SVN_EDITOR=$EDITOR
 export GIT_EDITOR=$EDITOR
 
-export PATH="$DOTFILES/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/git/man:$MANPATH"
 export DEV_PATH="$HOME/dev"
 export HOME_DEV_PATH="$HOME/dev/h"
@@ -90,5 +95,7 @@ alias mt='multitail -C'
 
 # ruby
 alias bun='bundle'
-alias gempurge='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
 alias rb='rbenv'
+alias gemin='gem install'
+alias gemun='gem uninstall'
+alias gempurge='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
