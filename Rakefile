@@ -1,4 +1,4 @@
-FILES = %w(bash_profile bashrc gitconfig gitignore irbrc tmux.conf railsrc zlogin zshrc)
+FILES = %w(bash_profile bashrc gitconfig gitignore irbrc tmux.conf railsrc zshrc)
 OPTS  = {:force => :boolean, :verbose => :boolean, :noop => :boolean}
 
 options = {}
@@ -39,4 +39,3 @@ def each_dotfile(&block)
     block.call File.expand_path(file), File.expand_path("~/.#{file}")
   end
 end
-
