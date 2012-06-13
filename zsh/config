@@ -7,6 +7,8 @@ autoload -U $DOTFILES/zsh/functions/*(:t)
 autoload -U colors
 colors
 
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+
 ##
 # Prompt
 ##
