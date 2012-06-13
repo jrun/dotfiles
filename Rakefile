@@ -24,9 +24,11 @@ task :clean do
 end
 
 def render_gitconfig
-  require 'erb'
-  File.open('gitconfig', 'w') do |f|
-    f.write ERB.new(File.read('gitconfig.erb')).result
+  if !File.exist?('gitconfig') || ENV['FORCE_GITCONFIG']
+    require 'erb'
+    File.open('gitconfig', 'w') do |f|
+      f.write ERB.new(File.read('gitconfig.erb')).result
+    end
   end
 end
 
