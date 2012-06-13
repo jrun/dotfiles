@@ -1,3 +1,5 @@
+path_prefix="$DOTFILES/bin"
+
 ##
 # Determine whether or not some programs
 # are installed.
@@ -12,37 +14,64 @@ which git > /dev/null
 git_installed=$?
 
 ##
-# path
+# rbenv installed?
 ##
-export PATH="$DOTFILES/bin:$PATH"
+which rbenv > /dev/null
+rbenv_installed=$?
+
+if [ $rbenv_installed -eq 0 ]; then
+    path_prefix='$prepend_path:$HOME/.rbenv/bin'
+    alias rb='rbenv'
+    eval "$(rbenv init -)"
+fi
 
 ##
-# ruby
+# path
 ##
-eval "$(rbenv init -)"
+export PATH="$prepend_path:$PATH"
 
 ##
 # Platform specific
 ##
 case `uname` in
-     (Darwin)
+    (Darwin)
         export JAVA_HOME='/Library/Java/Home'
         EDITOR='emacsclient --alternate-editor=mate'
-     ;;
-     (SunOS)
+
+        alias bu='brew update'
+        alias bout='brew outdated'
+        alias bup='brew upgrade'
+
+        vmrun="/Applications/VMware\ Fusion.app/Contents/Library/vmrun"
+
+        ##
+        # vmware
+        ##
+        vmstart() { $vmrun start $1 nogui }
+
+        alias vmstop="$vmrun stop"
+        alias vmls="$vmrun list"
+
+        ;;
+    (SunOS)
         export TERM='xterm'
-     ;;
-     (*)
-        EDITOR='vim'
+        ;;
+    (*)
         if [ $emacsclient_installed -eq 0 ]; then
-          EDITOR="emacsclient --alternate-editor=vim"
+            EDITOR="emacsclient --alternate-editor=vim"
+        else
+            which mg > /dev/null
+            mg_installed=$?
+
+            if [ $mg_installed -eq 0]; then
+                EDITOR='mg'
+            else
+                EDITOR='vim'
+            fi
         fi
-    ;;
+        ;;
 esac
 
-##
-# env
-##
 export EDITOR
 export SVN_EDITOR=$EDITOR
 export GIT_EDITOR=$EDITOR
@@ -58,12 +87,18 @@ export NODE_PATH="/usr/local/lib/node_modules"
 ##
 # aliases
 ##
+alias t=touch
+alias ..='cd ..'
+alias e="$EDITOR --no-wait"
+alias grep='grep --color'
+alias sha256='openssl dgst -sha256'
 
 # ls
 alias ls="ls -F"
 alias l="ls -lAh"
 alias ll="ls -l"
 alias la='ls -A'
+alias lt='ls -lt'
 
 # git
 alias gai='git add -i'
@@ -82,16 +117,8 @@ alias s='git status --short'
 alias tls='tmux list-sessions'
 alias ta='tmux attach -t '
 
-# misc
-alias ..='cd ..'
-alias e="$EDITOR --no-wait"
-alias grep='grep --color'
-alias sha256='openssl dgst -sha256'
-alias mt='multitail -C'
-
 # ruby
-alias bun='bundle'
-alias rb='rbenv'
+alias bi='bundle install'
 alias gemin='gem install'
 alias gemun='gem uninstall'
 alias gempurge='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
