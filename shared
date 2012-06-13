@@ -27,11 +27,7 @@ eval "$(rbenv init -)"
 case `uname` in
      (Darwin)
         export JAVA_HOME='/Library/Java/Home'
-
         EDITOR='emacsclient --alternate-editor=mate'
-
-        alias trustcert="sudo security add-trusted-cert -k /Library/Keychains/System.keychain"
-
      ;;
      (SunOS)
         export TERM='xterm'
