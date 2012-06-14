@@ -63,7 +63,7 @@ case `uname` in
             which mg > /dev/null
             mg_installed=$?
 
-            if [ $mg_installed -eq 0]; then
+            if [ $mg_installed -eq 0 ]; then
                 EDITOR='mg'
             else
                 EDITOR='vim'
