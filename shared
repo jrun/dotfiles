@@ -86,8 +86,11 @@ export NODE_PATH="/usr/local/lib/node_modules"
 alias t=touch
 alias ..='cd ..'
 alias e="$EDITOR --no-wait"
-alias grep='grep --color'
 alias sha256='openssl dgst -sha256'
+
+if [ `uname` != 'SunOS' ]; then
+    alias grep='grep --color'
+fi
 
 # ls
 alias ls="ls -F"
