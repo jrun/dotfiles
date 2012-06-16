@@ -12,21 +12,19 @@ which git > /dev/null
 git_installed=$?
 
 ##
-# rbenv installed?
+# rbenv
 ##
-which rbenv > /dev/null
-rbenv_installed=$?
-
-if [ $rbenv_installed -eq 0 ]; then
-    path_prefix='$prepend_path:$HOME/.rbenv/bin'
+if [[ -d "$HOME/.rbenv" ]]; then
+    rbenv_path="$HOME/.rbenv/bin"
+    path_prefix="$path_prefix:$rbenv_path"
     alias rb='rbenv'
-    eval "$(rbenv init -)"
+    eval "$($rbenv_path/rbenv init -)"
 fi
 
 ##
 # path
 ##
-export PATH="$DOTFILES/bin:$prepend_path:$PATH"
+export PATH="$DOTFILES/bin:$path_prefix:$PATH"
 
 ##
 # Platform specific
