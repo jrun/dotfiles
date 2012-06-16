@@ -43,7 +43,7 @@ case `uname` in
         ##
         # vmware
         ##
-        vmstart() { $vmrun start $1 nogui }
+        vmstart() { eval "$vmrun start $1 nogui" }
 
         alias vmstop="$vmrun stop"
         alias vmls="$vmrun list"
