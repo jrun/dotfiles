@@ -100,6 +100,7 @@ alias la='ls -A'
 alias lt='ls -lt'
 
 # git
+alias g='git'
 alias gai='git add -i'
 alias gap='git add -p'
 alias gb='git branch'
@@ -107,8 +108,7 @@ alias gc='git commit'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gf='git fetch'
-alias gl='git log --pretty=oneline --abbrev-commit --graph --decorate'
-alias gl2="git log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'"
+alias gl='git lg'
 alias gp='git push'
 alias s='git status --short'
 
