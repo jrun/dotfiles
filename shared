@@ -24,7 +24,7 @@ fi
 ##
 # path
 ##
-export PATH="$DOTFILES/bin:$path_prefix:$PATH"
+export PATH="$DOTFILES/bin:$path_prefix:/usr/local/bin:$PATH"
 
 ##
 # Platform specific
@@ -49,8 +49,13 @@ case `uname` in
         alias vmls="$vmrun list"
 
         ;;
+
     (SunOS)
+
         export TERM='xterm'
+        export CFLAGS="-I /opt/local/include -L /opt/local/lib:$CFLAGS"
+        export LD_LIBRARY_PATH="/opt/local/lib:$LD_LIBRARY_PATH"
+
         ;;
     (*)
         if [ $emacsclient_installed -eq 0 ]; then
