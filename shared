@@ -53,6 +53,7 @@ case `uname` in
     (SunOS)
 
         export TERM='xterm'
+        export PATH="$PATH:/opt/local/bin"
         export CFLAGS="-I /opt/local/include -L /opt/local/lib:$CFLAGS"
         export LD_LIBRARY_PATH="/opt/local/lib:$LD_LIBRARY_PATH"
 
