@@ -117,6 +117,8 @@ alias gf='git fetch'
 alias gl='git lg'
 alias gp='git push'
 alias s='git status --short'
+alias gfo='git fetch origin'
+alias gpo='git push origin'
 
 # tmux
 alias tls='tmux list-sessions'
