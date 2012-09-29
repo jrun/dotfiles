@@ -1,5 +1,5 @@
 FILES = %w(bash_profile bashrc gitconfig gitignore pryrc tmux.conf zshrc)
-OPTS  = {:force => :boolean, :verbose => :boolean, :noop => :boolean}
+OPTS  = {force: :boolean, verbose: :boolean, noop: :boolean}
 
 options = {}
 
