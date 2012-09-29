@@ -5,11 +5,18 @@ end
 
 Pry.config.prompt = [prompt, prompt]
 
-# Is this a Rails < 3.0 app?
-if File.exist? "#{Dir.pwd}/script/runner"
+if File.exist? "#{Dir.pwd}/script/rails" # Rails >= 3
+
+  require './config/environment'
+  require 'rails/console/app'
+  require 'rails/console/helpers'
+
+elsif File.exist? "#{Dir.pwd}/script/runner" # Rails < 3.0 app?
+
   require './config/environment'
   require 'console_app'
   require 'console_with_helpers'
+
 end
 
 # Settings for better inf-ruby support.
