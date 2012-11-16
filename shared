@@ -79,11 +79,10 @@ export SVN_EDITOR=$EDITOR
 export GIT_EDITOR=$EDITOR
 
 export MANPATH="/usr/local/man:/usr/local/git/man:$MANPATH"
-export DEV_PATH="$HOME/dev"
-export HOME_DEV_PATH="$HOME/dev/h"
-export WORK_DEV_PATH="$HOME/dev/w"
-export OSS_DEV_PATH="$HOME/dev/oss"
-export CDPATH=":$WORK_DEV_PATH:$HOME_DEV_PATH:$OSS_DEV_PATH:$DEV_PATH:$HOME:$CDPATH"
+export PROJECTS_PATH="$HOME/projects"
+export WORK_PROJECTS_PATH="$HOME/work/projects"
+export CDPATH=":$WORK_PROJECTS_PATH:$PROJECTS_PATH:$PROJECTS_PATH/oss:$HOME:$CDPATH"
+export GOPATH="$PROJECTS_PATH/go:$WORK_PROJECTS_PATH/go"
 export NODE_PATH="/usr/local/lib/node_modules"
 
 ##
