@@ -24,7 +24,7 @@ fi
 ##
 # path
 ##
-export PATH="$DOTFILES/bin:$path_prefix:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$DOTFILES/bin:$path_prefix:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
 
 ##
 # Platform specific
