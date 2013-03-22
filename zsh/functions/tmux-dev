@@ -14,8 +14,7 @@ cd
 ##
 tmux new-session -d -s dev -n emacs
 
-tmux new-window -t dev: -n scratch
-tmux split-window -h
+tmux new-window -t dev: -n ''
 
 tmux select-window -t dev:0
 tmux -2 attach-session -t dev
