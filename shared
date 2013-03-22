@@ -31,7 +31,7 @@ export PATH="$DOTFILES/bin:$path_prefix:/usr/local/bin:/usr/local/sbin:/usr/loca
 case `uname` in
     (Darwin)
         export JAVA_HOME='/Library/Java/Home'
-        EDITOR='emacsclient --alternate-editor=mate'
+        EDITOR='emacsclient --alternate-editor=vim'
 
         alias bu='brew update'
         alias bout='brew outdated'
