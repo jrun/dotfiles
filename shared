@@ -15,10 +15,9 @@ git_installed=$?
 # rbenv
 ##
 if [[ -d "$HOME/.rbenv" ]]; then
-    rbenv_path="$HOME/.rbenv/bin"
-    path_prefix="$path_prefix:$rbenv_path"
+    path_prefix="$HOME/.rbenv/shims:$HOME/.rbenv/bin"
     alias rb='rbenv'
-    eval "$($rbenv_path/rbenv init -)"
+    eval "$($HOME/.rbenv/bin/rbenv init -)"
 fi
 
 ##
