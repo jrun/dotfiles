@@ -29,7 +29,7 @@ export PATH="$DOTFILES/bin:$path_prefix:/usr/local/bin:/usr/local/sbin:/usr/loca
 # Platform specific
 ##
 case `uname` in
-    (Darwin)
+    Darwin)
         export JAVA_HOME='/Library/Java/Home'
         EDITOR='emacsclient --alternate-editor=vim'
 
@@ -46,18 +46,9 @@ case `uname` in
 
         alias vmstop="$vmrun stop"
         alias vmls="$vmrun list"
-
         ;;
 
-    (SunOS)
-
-        export TERM='xterm'
-        export PATH="$PATH:/opt/local/bin"
-        export CFLAGS="-I /opt/local/include -L /opt/local/lib:$CFLAGS"
-        export LD_LIBRARY_PATH="/opt/local/lib:$LD_LIBRARY_PATH"
-
-        ;;
-    (*)
+    *)
         if [ $emacsclient_installed -eq 0 ]; then
             EDITOR="emacsclient --alternate-editor=vim"
         else
