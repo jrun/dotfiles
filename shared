@@ -39,13 +39,13 @@ case `uname` in
 
         vmrun="/Applications/VMware\ Fusion.app/Contents/Library/vmrun"
 
+        alias vmstop="$vmrun stop"
+        alias vmls="$vmrun list"
+
         ##
         # vmware
         ##
         vmstart() { eval "$vmrun start $1 nogui" }
-
-        alias vmstop="$vmrun stop"
-        alias vmls="$vmrun list"
         ;;
 
     *)
@@ -61,7 +61,7 @@ case `uname` in
                 EDITOR='vim'
             fi
         fi
-        ;;
+       ;;
 esac
 
 export EDITOR
