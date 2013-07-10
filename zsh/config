@@ -26,7 +26,7 @@ if [ $git_installed -eq 0 ]; then
 fi
 
 export PROMPT="$PROMPT
-%B%F{yellow}%#%b%f "
+%B%F{yellow}★%b%f  "
 
 ##
 # Options
