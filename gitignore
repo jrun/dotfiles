@@ -20,5 +20,5 @@ pkg
 
 ## PROJECT::SPECIFIC
 .yardoc
-doc/*
-!doc/*.md
+
+.ruby-version
