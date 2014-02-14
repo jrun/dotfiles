@@ -41,6 +41,7 @@ setopt AUTO_CD
 setopt COMPLETE_IN_WORD
 setopt EXTENDED_HISTORY # add timestamps to history
 setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
+setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 setopt IGNORE_EOF
