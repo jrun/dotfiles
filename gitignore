@@ -22,3 +22,4 @@ pkg
 .yardoc
 
 .ruby-version
+.byebug_history
